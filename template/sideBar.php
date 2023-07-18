@@ -94,8 +94,7 @@
                 </a>
                 <div class="collapse" id="marketing" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="tables.php">商品列表</a>
-                        <a class="nav-link" href="tables.php">下架商品</a>
+                        <a class="nav-link" href="../coupon/coupon_list.php">優惠券列表</a>
                     </nav>
                 </div>
                 <!-- =====租用商品管理===== -->
