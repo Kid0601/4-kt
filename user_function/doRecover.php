@@ -2,7 +2,7 @@
 if (!isset($_GET["id"])) {
     die("無法作業");
 }
-require_once("db_connect_small_project.php");
+require_once("../db_connect.php");
 $id = $_GET["id"];
 echo $id;
 $sql = "UPDATE users SET valid=1 WHERE id=$id";

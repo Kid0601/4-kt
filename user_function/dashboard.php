@@ -4,7 +4,7 @@
 // 網頁 title
 $title = "會員列表";
 
-require_once("db_connect_small_project.php");
+require_once("../db_connect.php");
 
 
 //分頁功能

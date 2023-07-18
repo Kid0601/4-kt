@@ -1,5 +1,5 @@
 <?php
-require_once("db_connect_small_project.php");
+require_once("../db_connect.php");
 $id = $_GET["id"];
 echo $id;
 $sql = "UPDATE users SET valid=0 WHERE id=$id";

@@ -1,5 +1,5 @@
 <?php
-require_once("db_connect_small_project.php");
+require_once("../db_connect.php");
 $sqlUserProfile = "SELECT * FROM user_profile";
 $resultUserProfile = $conn->query($sqlUserProfile);
 $rowsUserProfile = $resultUserProfile->fetch_all(MYSQLI_ASSOC);
