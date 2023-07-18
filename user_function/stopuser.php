@@ -2,7 +2,7 @@
 // ===== 要使用模板，記得注意路徑，否則抓不到template裡面的檔案 =====
 // ===== 把模板複製到你的資料夾，然後修改裡面的內容就能用了 =====
 // 網頁 title
-require_once("db_connect_small_project.php");
+require_once("../db_connect.php");
 
 
 //分頁功能

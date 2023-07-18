@@ -1,5 +1,5 @@
 <?php
-require_once("db_connect_small_project.php");
+require_once("../db_connect.php");
 $sql = "SELECT * FROM users";
 $result = $conn->query($sql);
 $rows = $result->fetch_all(MYSQLI_ASSOC);

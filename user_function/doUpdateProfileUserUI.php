@@ -3,7 +3,7 @@
 // ===== 把模板複製到你的資料夾，然後修改裡面的內容就能用了 =====
 // 網頁 title
 $title = "編輯會員";
-require_once("db_connect_small_project.php");
+require_once("../db_connect.php");
 // $sql = "SELECT * FROM user_profile";
 // $result = $conn->query($sql);
 // $rows = $result->fetch_all(MYSQLI_ASSOC);

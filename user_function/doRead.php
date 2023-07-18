@@ -4,7 +4,7 @@
 // 網頁 title
 $title = "會員資料";
 
-require_once("db_connect_small_project.php");
+require_once("../db_connect.php");
 //user_profile
 $sql = "SELECT * FROM user_profile";
 $result = $conn->query($sql);

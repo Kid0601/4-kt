@@ -9,7 +9,7 @@
 // echo $_POST["account"] . "<br>";
 // echo $_POST["password"] . "<br>";
 // echo $_POST["confirmPassword"];
-require_once("db_connect_small_project.php");
+require_once("../db_connect.php");
 //users 資料庫讀取
 $account = $_POST["account"];
 $email = $_POST["email"];

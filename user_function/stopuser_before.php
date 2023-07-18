@@ -1,5 +1,5 @@
 <?php
-require_once("db_connect_small_project.php");
+require_once("../db_connect.php");
 
 
 //分頁功能
