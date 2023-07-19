@@ -12,6 +12,11 @@
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
     <link href="css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <style>
+        #bigLogo {
+            height: 700px;
+        }
+    </style>
 </head>
 
 <body class="sb-nav-fixed">
@@ -55,7 +60,7 @@
                         <div class="collapse" id="order" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="./product/product-list.php">商品列表</a>
-                                <a class="nav-link" href="tables.php">下架商品</a>
+                                <a class="nav-link" href="./product/comment.php">商品評論</a>
                             </nav>
                         </div>
                         <!-- 類別管理 -->
@@ -146,8 +151,10 @@
             <main>
                 <div class="container-fluid px-4 h-100 d-flex justify-content-center align-items-center flex-column">
 
-                    <h1 class="mt-4">歡迎來到 鍵の旅人 後台管理</h1>
-                    <img src="./images/logo/logo-column.png" alt="logo">
+                    <h1 class="mt-4 fw-bolder">歡迎來到 鍵の旅人 後台管理</h1>
+                    <figure id="bigLogo" class="d-flex justify-content-center align-items-center">
+                        <img class="h-50" src="./images/logo/方logo.svg" alt="logo">
+                    </figure>
                 </div>
             </main>
             <?php include("./template/footer.php") ?>
