@@ -22,26 +22,42 @@ $parentCategoryId = isset($_GET['parent_category']) ? $_GET['parent_category'] :
 </head>
 
 <body>
-    <div class="container">
-        <div class="py-2">
-            <a href="category-list.php" class="btn btn-info">回類別管理列表</a>
-        </div>
-        <form action="doCreateCategory2.php" method="post" class="w-50 m-auto d-flex flex-column align-items-start">
-            <div class="mb-2">
-                <label for="" class="fs-4">僅新增子類別</label>
-                <select class="form-select form-select-lg" aria-label=".form-select-lg example" name="parent_category">
-                    <?php foreach ($rows1 as $item) : ?>
-                        <!-- 檢查是否與父類別ID相符，如果相符則將其設為預選選項 -->
-                        <option value="<?= $item['id']; ?>" <?php echo ($item['id'] == $parentCategoryId) ? 'selected' : ''; ?>>
-                            <?= $item['name']; ?>
-                        </option>
-                    <?php endforeach; ?>
-                </select>
-                <label for="" class="fs-4">子類別</label>
-                <input type="text" class="form-control" name="cat2_name">
+    <div class="modal fade" id="createCatModal_2_<?= $row1["id"] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-1" id="createCatModal_2_<?= $row1["id"] ?>">僅新增子類別</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="doCreateCategory2.php">
+                        <table class="table table-bordered">
+                            <tr>
+                                <th class="fs-5">商品類別名稱</th>
+                                <td>
+                                    <select class="form-select form-select-lg" aria-label=".form-select-lg example" name="parent_category">
+                                        <?php foreach ($rows1 as $item) : ?>
+                                            <option value="<?= $item['id']; ?>" <?php echo ($item['id'] == $parentCategoryId) ? 'selected' : ''; ?>>
+                                                <?= $item['name']; ?>
+                                            </option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="fs-5">子類別名稱</th>
+                                <td>
+                                    <input type="text" class="form-control" name="cat2_name">
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="py-2 d-flex justify-content-end">
+                            <button class="btn btn-success" type="submit">送出</button>
+                        </div>
+                    </form>
+                </div>
             </div>
-            <button class="btn btn-success" type="submit">送出</button>
-        </form>
+        </div>
     </div>
 
 
