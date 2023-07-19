@@ -98,7 +98,7 @@
                         <div class="collapse" id="article" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="art_file/article.php">文章主頁</a>
-                                <a class="nav-link" href="tables.php">下架商品</a>
+
                             </nav>
                         </div>
                         <!-- 行銷管理 -->
