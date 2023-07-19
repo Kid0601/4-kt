@@ -3,20 +3,21 @@
 // ===== 把模板複製到你的資料夾，然後修改裡面的內容就能用了 =====
 // 網頁 title
 $title = "會員資料";
-
+$id = $_GET["id"];
 require_once("../db_connect.php");
 //user_profile
-$sql = "SELECT * FROM user_profile";
+$sql = "SELECT * FROM user_profile WHERE id = $id ";
 $result = $conn->query($sql);
 $rows = $result->fetch_all(MYSQLI_ASSOC);
 //user
-$sqlUser = "SELECT * FROM users";
+$sqlUser = "SELECT * FROM users WHERE id = $id";
 $resultUser = $conn->query($sqlUser);
 $rowsUser = $resultUser->fetch_all(MYSQLI_ASSOC);
+var_dump($rowsUser);
 
 //讀取id
-$id = $_GET["id"];
-$idA = $_GET["id"] - 1;
+
+
 
 
 //文章收藏功能
@@ -58,43 +59,43 @@ $titles = $titleWeb->fetch_all(MYSQLI_ASSOC);
                             <table class="table table-bordered  table-striped border-5  border-secondary rounded">
                                 <tr class="row">
                                     <td class="col">Account</td>
-                                    <td class="col"><?= $rowsUser[$idA]['account'] ?></td>
+                                    <td class="col"><?= $rowsUser[0]['account'] ?></td>
                                 </tr>
                                 <tr class="row">
                                     <td class="col">Password</td>
-                                    <td class="col"><?= $rowsUser[$idA]['password'] ?></td>
+                                    <td class="col"><?= $rowsUser[0]['password'] ?></td>
                                 </tr>
                                 <tr class="row">
                                     <td class="col">Email</td>
-                                    <td class="col"><?= $rowsUser[$idA]['email'] ?></td>
+                                    <td class="col"><?= $rowsUser[0]['email'] ?></td>
                                 </tr>
                                 <tr class="row">
                                     <td class="col">Last Name</td>
-                                    <td class="col"><?= $rows[$idA]['last_name'] ?></td>
+                                    <td class="col"><?= $rows[0]['last_name'] ?></td>
                                 </tr>
                                 <tr class="row">
                                     <td class="col">First Name</td>
-                                    <td class="col"><?= $rows[$idA]['first_name'] ?></td>
+                                    <td class="col"><?= $rows[0]['first_name'] ?></td>
                                 </tr>
                                 <tr class="row">
                                     <td class="col">gender</td>
-                                    <td class="col"><?= $rows[$idA]['gender'] == 1 ? "女" : "男" ?></td>
+                                    <td class="col"><?= $rows[0]['gender'] == 1 ? "女" : "男" ?></td>
                                 </tr>
                                 <tr class="row">
                                     <td class="col">birthday</td>
-                                    <td class="col"><?= $rows[$idA]['birthday'] ?></td>
+                                    <td class="col"><?= $rows[0]['birthday'] ?></td>
                                 </tr>
                                 <tr class="row">
                                     <td class="col">phone</td>
-                                    <td class="col"><?= $rows[$idA]['phone'] ?></td>
+                                    <td class="col"><?= $rows[0]['phone'] ?></td>
                                 </tr>
                                 <tr class="row">
                                     <td class="col">address</td>
-                                    <td class="col"><?= $rows[$idA]['address'] ?></td>
+                                    <td class="col"><?= $rows[0]['address'] ?></td>
                                 </tr>
                                 <tr class="row">
                                     <td class="col">Created Time</td>
-                                    <td class="col"><?= $rowsUser[$idA]['created_at'] ?></td>
+                                    <td class="col"><?= $rowsUser[0]['created_at'] ?></td>
                                 </tr>
                             </table>
                             <div class="user_profile_box m-auto pt-5 w-100">
