@@ -77,7 +77,7 @@ $title = "商品查詢";
                                         <td><?= $row["name"] ?></td>
                                         <td>
                                             <figure class="ratio ratio-1x1">
-                                                <img src="/rent_img/<?= $row["img"] ?>" alt="">
+                                                <img src="../rent_img/<?= $row["img"] ?>" alt="">
                                             </figure>
                                         </td>
                                         <td><?= $row["price"] ?></td>

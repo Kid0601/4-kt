@@ -81,7 +81,7 @@ $title = "商品列表";
                                         <td><?= $row["name"] ?></td>
                                         <td>
                                             <figure class="ratio ratio-1x1">
-                                                <img class="object-fit-cover" src="/rent_img/<?= $row['img'] ?>" alt="<?= $row['name'] ?>">
+                                                <img class="object-fit-cover" src="../rent_img/<?= $row['img'] ?>" alt="<?= $row['name'] ?>">
                                             </figure>
                                         <td><?= $row["price"] ?></td>
                                         <td><?= $row["quantity"] ?></td>
