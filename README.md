@@ -10,3 +10,4 @@
 # 2023/07/18 郭寧 - modify index.php(modify the path of coupon button) & navbar.php(modify the path of site button)
 # 2023/07/18 郭寧 - modify coupon_list.php
 # 2023/07/19 立軒 - modify create category2 by modal
+# 2023/07/19 鄭凱文 - change article.php JS
