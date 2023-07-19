@@ -29,7 +29,7 @@ $address = $_POST["address"];
 $sqlUsersProfile = "INSERT INTO `user_profile` (`last_name`, `first_name`, `gender`, `birthday`, `phone`, `address`) VALUES ('$lastName ', '$firstName', '$gender', '$birthday ','$phone' ,'$address')";
 
 //驗證
-if (isset($account) || isset($email) || isset($password) || isset($lastName) || isset($firstName) || isset($birthday) || isset($phone) || isset($address)) {
+if (!isset($account) || !isset($email) || !isset($password) || !isset($lastName) || !isset($firstName) || !isset($birthday) || !isset($phone) || !isset($address)) {
     die("請輸入資料");
 }
 if ($password != $confirmPassword) {

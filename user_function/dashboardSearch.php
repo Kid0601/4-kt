@@ -69,7 +69,7 @@ $title = "搜尋結果:$searchValue";
                         <!-- 表格放卡片裡面 -->
 
                         <div class="card-body">
-                            <table class="table" id="datatablesSimple">
+                            <table class="table">
                                 <thead>
                                     <tr>
                                         <th>Id</th>
