@@ -69,7 +69,7 @@ $title = "搜尋結果:$searchValue";
                         <!-- 表格放卡片裡面 -->
 
                         <div class="card-body">
-                            <table class="table" id="datatablesSimple">
+                            <table class="table">
                                 <thead>
                                     <tr>
                                         <th>Id</th>
@@ -119,7 +119,7 @@ $title = "搜尋結果:$searchValue";
                     <div class="operation py-3">
                         <h3>管理者操作面板</h3>
                         <div class="operation-content">
-                            <a href="/key_traveler/user_function/dashboard.php"><button class="btn btn-dark">回到會員資料</button></a>
+                            <a href="dashboard.php"><button class="btn btn-dark">回到會員資料</button></a>
 
                         </div>
 

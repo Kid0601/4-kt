@@ -82,8 +82,7 @@
                         </a>
                         <div class="collapse" id="product" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="tables.php">商品列表</a>
-                                <a class="nav-link" href="tables.php">下架商品</a>
+                                <a class="nav-link" href="order/user_order.php">訂單列表</a>
                             </nav>
                         </div>
                         <!-- 文章管理 -->
@@ -130,8 +129,7 @@
                         </a>
                         <div class="collapse" id="rent-product" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="tables.php">商品列表</a>
-                                <a class="nav-link" href="tables.php">下架商品</a>
+                                <a class="nav-link" href="rent/rent_list.php">商品列表</a>
                             </nav>
                         </div>
                     </div>

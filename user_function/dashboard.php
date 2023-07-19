@@ -127,7 +127,7 @@ $pages = ceil($totalPages / 10); //計算總共有幾頁
                     <div class="operation py-3 ">
                         <h3>管理者操作面板</h3>
                         <div class="operation-content">
-                            <a href="/key_traveler/user_function/register.php"><button class="btn btn-dark">新增</button></a>
+                            <a href="register.php"><button class="btn btn-dark">新增</button></a>
                             <a href="stopUser.php" class="btn btn-dark">停權名單</a>
                         </div>
                         <a href="register_back-end-test.php" class="text-light">新增_後端表單驗證(測試用) </a>
