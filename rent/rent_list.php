@@ -64,7 +64,6 @@ $title = "商品列表";
                     </div>
                     <div class="card mb-4">
                         <div class="card-body">
-
                             <table class="table table-bordered">
                                 <tr>
                                     <th>商品編號 </th>
@@ -101,7 +100,6 @@ $title = "商品列表";
                                     </tr>
                                 <?php endforeach; ?>
                             </table>
-
                         </div>
                     </div>
                     <nav aria-label="Page navigation example">
@@ -118,10 +116,9 @@ $title = "商品列表";
         </div>
     </div>
     <?php include("../template/footerJs.php") ?>
-    <script src="../js/scripts.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap5-toggle@5.0.4/js/bootstrap5-toggle.ecmas.min.js"></script>
+    
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap5-toggle@5.0.4/js/bootstrap5-toggle.ecmas.min.js"></script> -->
+    
 
     <script>
         const rentSelect = document.querySelector("#rentSelect")
