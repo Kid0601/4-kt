@@ -135,9 +135,46 @@ $rows2 = $result2->fetch_all(MYSQLI_ASSOC);
                                                     <p>目前沒有任何子類別</p>
                                                 <?php endif; ?>
                                                 <div class="btn-group mt-3" role="group" aria-label="Basic mixed styles example" style="float: right;">
-                                                    <a type="button" class="btn btn-success" href="create-category2.php?parent_category=<?= $row1["id"] ?>">新增</a>
+                                                    <a type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#createCatModal_2_<?= $row1["id"] ?>">新增</a>
                                                     <a type="button" class="btn btn-warning" href="category-edit.php?id=<?= $row1["id"] ?>">編輯</a>
                                                     <a type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal_1_<?= $row1["id"] ?>">刪除</a>
+                                                </div>
+                                                <div class="modal fade" id="createCatModal_2_<?= $row1["id"] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h1 class="modal-title fs-1">僅新增子類別</h1>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <form method="post" action="doCreateCategory2.php">
+                                                                    <table class="table table-bordered">
+                                                                        <tr>
+                                                                            <th class="fs-5">商品類別名稱</th>
+                                                                            <td>
+                                                                                <select class="form-select form-select-lg" aria-label=".form-select-lg example" name="parent_category">
+                                                                                    <?php foreach ($rows1 as $item) : ?>
+                                                                                        <option value="<?= $item['id']; ?>" <?php echo ($item['id'] == $row1["id"]) ? 'selected' : ''; ?>>
+                                                                                            <?= $item['name']; ?>
+                                                                                        </option>
+                                                                                    <?php endforeach; ?>
+                                                                                </select>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th class="fs-5">子類別名稱</th>
+                                                                            <td>
+                                                                                <input type="text" class="form-control" name="cat2_name">
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                    <div class="py-2 d-flex justify-content-end">
+                                                                        <button class="btn btn-success" type="submit">送出</button>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                                 <div class="modal fade" id="deleteModal_1_<?= $row1["id"] ?>" tabindex="-1" aria-labelledby="" aria-hidden="true">
                                                     <div class="modal-dialog modal-sm">
