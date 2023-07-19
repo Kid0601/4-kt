@@ -113,7 +113,7 @@ $rows = $result->fetch_all(MYSQLI_ASSOC);
                         <h1>優惠券列表</h1>
                         <a href="coupon_create.php" class="btn btn-primary h-100">新增</a>
                     </div>
-                    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                    <nav aria-label="breadcrumb">
                         <ol class="breadcrumb mb-4">
                             <!-- 你有幾層就複製幾個 -->
                             <li class="breadcrumb-item">
