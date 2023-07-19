@@ -71,17 +71,21 @@ $read_rows = $result->fetch_assoc();
                     <tr>
                         <th>已上傳圖片</th>
                         <td>
-                            <?php
-                            $test = $read_rows["img"];
-                            // echo $test;
-                            $dataWithoutQuotes = str_replace('"', '', $test);
-                            // echo $dataWithoutQuotes;
-                            $arrayFromDatabase = explode(", ", $dataWithoutQuotes);
-                            // print_r($arrayFromDatabase);
-                            foreach ($arrayFromDatabase as $load_img) {
-                                echo "<img src=' ../article_img/$load_img' alt='圖檔連線失敗'>";
-                            }
-                            ?>
+                            <?php if ($read_rows["img"] != '""' && $read_rows["img"] != "") : ?>
+                                <?php
+                                $test = $read_rows["img"];
+                                // echo $test;
+                                $dataWithoutQuotes = str_replace('"', '', $test);
+                                // echo $dataWithoutQuotes;
+                                $arrayFromDatabase = explode(", ", $dataWithoutQuotes);
+                                // print_r($arrayFromDatabase);
+                                foreach ($arrayFromDatabase as $load_img) {
+                                    echo "<img src=' ../article_img/$load_img' alt='圖檔連線失敗'>";
+                                }
+                                ?>
+                            <?php else : ?>
+                                <?= "無圖片" ?>
+                            <?php endif; ?>
 
                             <!-- <img src="../article_img/<?= $arrayFromDatabase["2"] ?>" alt="圖檔連線失敗"> -->
                             <!-- <?= $read_rows["img"] ?> -->
