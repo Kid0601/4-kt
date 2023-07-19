@@ -6,3 +6,4 @@
 # 2023/07/19 咸儒 - modify index & stopuser $ dashboardSearch href;modify createUI bug for validation bug; 
 # 2023/07/19 鄭凱文 - add article file and modify index.php, sidebar.php
 # 2023/07/19 鄭凱文 - add article_img and gitignore
+# 2023/07/19 立軒 - add category folder and modify index.php, sidebar.php
