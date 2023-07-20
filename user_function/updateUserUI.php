@@ -1,10 +1,10 @@
 <?php
 require_once("../db_connect.php");
-$sqlUser = "SELECT * FROM users";
+$id = $_GET["id"];
+$sqlUser = "SELECT * FROM users WHERE id=$id";
 $resultUser = $conn->query($sqlUser);
 $rowsUser = $resultUser->fetch_all(MYSQLI_ASSOC);
-$id = $_GET["id"];
-$idA = $_GET["id"] - 1;
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,9 +31,9 @@ $idA = $_GET["id"] - 1;
                             <div class="card shadow-lg border-0 rounded-lg mt-5">
                                 <div class="card-header">
                                     <h2 class="text-center font-weight-light my-4">Update Account</h2>
-                                    <h4>Account:<?= $rowsUser[$idA]['account'] ?></h4>
-                                    <h4>Password:<?= $rowsUser[$idA]['password'] ?></h4>
-                                    <h4>Password:<?= $rowsUser[$idA]['email'] ?></h4>
+                                    <h4>Account:<?= $rowsUser[0]['account'] ?></h4>
+                                    <h4>Password:<?= $rowsUser[0]['password'] ?></h4>
+                                    <h4>Password:<?= $rowsUser[0]['email'] ?></h4>
                                 </div>
 
                                 <div class="card-body">

@@ -1,10 +1,11 @@
 <?php
 require_once("../db_connect.php");
-$sqlUserProfile = "SELECT * FROM user_profile";
+$id = $_GET["id"];
+$sqlUserProfile = "SELECT * FROM user_profile WHERE id=$id";
 $resultUserProfile = $conn->query($sqlUserProfile);
 $rowsUserProfile = $resultUserProfile->fetch_all(MYSQLI_ASSOC);
-$id = $_GET["id"];
-$idA = $_GET["id"] - 1;
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,12 +32,12 @@ $idA = $_GET["id"] - 1;
                             <div class="card shadow-lg border-0 rounded-lg mt-5">
                                 <div class="card-header">
                                     <h2 class="text-center font-weight-light my-4">Update Account</h2>
-                                    <p>Last Name:<?= $rowsUserProfile[$idA]["last_name"] ?></p>
-                                    <p>First Name:<?= $rowsUserProfile[$idA]["first_name"] ?></p>
-                                    <p>Gender:<?= $rowsUserProfile[$idA]["gender"] == 1 ? "女" : "男" ?> </p>
-                                    <p>Birthday:<?= $rowsUserProfile[$idA]["birthday"] ?></p>
-                                    <p>Phone:<?= $rowsUserProfile[$idA]["phone"] ?></p>
-                                    <p>Address:<?= $rowsUserProfile[$idA]["address"] ?></p>
+                                    <p>Last Name:<?= $rowsUserProfile[0]["last_name"] ?></p>
+                                    <p>First Name:<?= $rowsUserProfile[0]["first_name"] ?></p>
+                                    <p>Gender:<?= $rowsUserProfile[0]["gender"] == 1 ? "女" : "男" ?> </p>
+                                    <p>Birthday:<?= $rowsUserProfile[0]["birthday"] ?></p>
+                                    <p>Phone:<?= $rowsUserProfile[0]["phone"] ?></p>
+                                    <p>Address:<?= $rowsUserProfile[0]["address"] ?></p>
 
                                 </div>
 
@@ -46,15 +47,15 @@ $idA = $_GET["id"] - 1;
                                             <div class="col-md-12">
                                                 <h4 class="py-3">Last name</h4>
                                                 <div class="form-floating mb-3 mb-md-0">
-                                                    <input class="form-control" id="inputLastName" name="lastName" type="text" value="<?= $rowsUserProfile[$idA]["last_name"] ?>" placeholder="Enter your first name" />
-                                                    <label class="text-secondary" for="inputLastName"><?= $rowsUserProfile[$idA]["last_name"] ?></label>
+                                                    <input class="form-control" id="inputLastName" name="lastName" type="text" value="<?= $rowsUserProfile[0]["last_name"] ?>" placeholder="Enter your first name" />
+                                                    <label class="text-secondary" for="inputLastName"><?= $rowsUserProfile[0]["last_name"] ?></label>
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
                                                 <h4 class="py-3">First name</h4>
                                                 <div class="form-floating">
-                                                    <input class="form-control" id="inputFirstName" name="firstName" type="text" value="<?= $rowsUserProfile[$idA]["first_name"] ?>" placeholder="Enter your last name" />
-                                                    <label class="text-secondary" for="inputFirstName"><?= $rowsUserProfile[$idA]["first_name"] ?></label>
+                                                    <input class="form-control" id="inputFirstName" name="firstName" type="text" value="<?= $rowsUserProfile[0]["first_name"] ?>" placeholder="Enter your last name" />
+                                                    <label class="text-secondary" for="inputFirstName"><?= $rowsUserProfile[0]["first_name"] ?></label>
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
@@ -71,22 +72,22 @@ $idA = $_GET["id"] - 1;
                                         <div class="col-md-12">
                                             <h4 class="py-3">Birthday</h4>
                                             <div class="form-floating">
-                                                <input class="form-control" id="inputBirthday" name="birthday" type="text" value="<?= $rowsUserProfile[$idA]["birthday"] ?>" placeholder="Enter your last name" />
-                                                <label class="text-secondary" for="inputBirthday"><?= $rowsUserProfile[$idA]["birthday"] ?></label>
+                                                <input class="form-control" id="inputBirthday" name="birthday" type="text" value="<?= $rowsUserProfile[0]["birthday"] ?>" placeholder="Enter your last name" />
+                                                <label class="text-secondary" for="inputBirthday"><?= $rowsUserProfile[0]["birthday"] ?></label>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <h4 class="py-3">Phone</h4>
                                             <div class="form-floating">
-                                                <input class="form-control" id="inputPhone" name="phone" type="text" value="<?= $rowsUserProfile[$idA]["phone"] ?>" placeholder="Enter your last name" />
-                                                <label class="text-secondary" for="inputPhone"><?= $rowsUserProfile[$idA]["phone"] ?></label>
+                                                <input class="form-control" id="inputPhone" name="phone" type="text" value="<?= $rowsUserProfile[0]["phone"] ?>" placeholder="Enter your last name" />
+                                                <label class="text-secondary" for="inputPhone"><?= $rowsUserProfile[0]["phone"] ?></label>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <h4 class="py-3">Address</h4>
                                             <div class="form-floating">
-                                                <input class="form-control" id="inputAddress" name="address" type="text" value="<?= $rowsUserProfile[$idA]["address"] ?>" placeholder="Enter your last name" />
-                                                <label class="text-secondary" for="inputAddress"><?= $rowsUserProfile[$idA]["address"] ?></label>
+                                                <input class="form-control" id="inputAddress" name="address" type="text" value="<?= $rowsUserProfile[0]["address"] ?>" placeholder="Enter your last name" />
+                                                <label class="text-secondary" for="inputAddress"><?= $rowsUserProfile[0]["address"] ?></label>
                                             </div>
                                         </div>
 
