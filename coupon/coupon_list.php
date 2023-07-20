@@ -1,4 +1,7 @@
 <?php
+// ===== 要使用模板，記得注意路徑，否則抓不到template裡面的檔案 =====
+// ===== 把模板複製到你的資料夾，然後修改裡面的內容就能用了 =====
+// 網頁 title
 
 $now = date("Y-m-d");
 
@@ -9,10 +12,14 @@ $type = $_GET["type"] ?? 0;
 $member = $_GET["member"] ?? "";
 
 require_once("../db_connect.php");
-
 // $sql = "SELECT * FROM coupon";
 
 $whereclouse = "";
+
+if (isset($_GET["start"]) && isset($_GET["end"])) {
+    $start = $_GET["start"] == "" ? '2023-01-01' : $_GET["start"];
+    $end = $_GET["end"] == "" ? '2023-12-31' : $_GET["end"];
+}
 
 
 
@@ -21,11 +28,22 @@ if ($member != "") {
     if ($valid != "") {
         $whereclouse .= " AND valid=$valid";
     }
+    if (isset($_GET["start"]) && isset($_GET["end"])) {
+        $whereclouse .= " AND (start_date BETWEEN '$start' AND '$end')";
+    }
 } else {
     if ($valid != "") {
         $whereclouse = "WHERE valid=$valid";
+        if (isset($_GET["start"]) && isset($_GET["end"])) {
+            $whereclouse .= " AND (start_date BETWEEN '$start' AND '$end')";
+        }
+    } else {
+        if (isset($_GET["start"]) && isset($_GET["end"])) {
+            $whereclouse = "WHERE start_date BETWEEN '$start' AND '$end'";
+        }
     }
 }
+
 
 
 // $sqlTotal = "SELECT id FROM coupon WHERE valid=1";
@@ -54,7 +72,7 @@ if ($type == 0) {
 } elseif ($type == 6) {
     $orderby = "ORDER BY id DESC";
 } else {
-    header("location: ../404.php");
+    header("location: /404.php");
 }
 
 // $sqlvalid = "SELECT * FROM test_valid ORDER BY id ASC";
@@ -64,7 +82,6 @@ if ($type == 0) {
 // echo "type is $type";
 //$sql = "SELECT * FROM coupon WHERE valid=1 $orderby LIMIT $startItem,$perPage";
 $sql = "SELECT * FROM coupon $whereclouse $orderby LIMIT $startItem,$perPage";
-echo "sql is " . $sql;
 
 $result = $conn->query($sql);
 $rows = $result->fetch_all(MYSQLI_ASSOC);
@@ -84,18 +101,19 @@ $rows = $result->fetch_all(MYSQLI_ASSOC);
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    <div class="d-flex justify-content-between align-items-center">
+                    <div class="d-flex justify-content-between align-items-center mt-4">
                         <?php
                         //echo "date is $now <br>"; 
                         // echo "startItem is $startItem <br>";
                         // echo "sqlTotal is " . $sqlTotal;
                         // echo "<br>sql is " . $sql;
-
+                        // echo "sql is " . $sql . "<br>";
+                        // echo "Start is " . $start . ",End is" . $end . "<br>";
                         ?>
-                        <h1 class="pt-2">優惠券列表</h1>
+                        <h1>優惠券列表</h1>
                         <a href="coupon_create.php" class="btn btn-primary h-100">新增</a>
                     </div>
-                    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                    <nav aria-label="breadcrumb">
                         <ol class="breadcrumb mb-4">
                             <!-- 你有幾層就複製幾個 -->
                             <li class="breadcrumb-item">
@@ -122,16 +140,28 @@ $rows = $result->fetch_all(MYSQLI_ASSOC);
                     <div class="py-3 d-flex justify-content-between align-itens-center">
                         <ul class="nav nav-underline">
                             <li class="nav-item">
-                                <a class="nav-link <?php if ($member == "") echo "active"; else echo "link-success"?> " aria-current="page" href="coupon_list.php">全部</a>
+                                <a class="nav-link <?php if ($member == "") echo "active";
+                                                    else echo "link-success" ?> " aria-current="page" href="coupon_list.php">全部</a>
+                            </li>
+                            <!-- <li class="nav-item">
+                                <a class="nav-link <?php //if ($valid == 1) echo "active"; 
+                                                    ?>" href="coupon_list.php?valid=1">上架</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link <?php if ($member == 0) echo "active"; else echo "link-success"?>" href="coupon_list.php?member=0">一般會員</a>
+                                <a class="nav-link <?php //if ($valid == 0) echo "active"; 
+                                                    ?>" href="coupon_list.php?valid=0">下架</a>
+                            </li> -->
+                            <li class="nav-item">
+                                <a class="nav-link <?php if ($member == 0) echo "active";
+                                                    else echo "link-success" ?>" href="coupon_list.php?member=0">一般會員</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link <?php if ($member == 1) echo "active"; else echo "link-success" ?>" href="coupon_list.php?member=1">銀會員</a>
+                                <a class="nav-link <?php if ($member == 1) echo "active";
+                                                    else echo "link-success" ?>" href="coupon_list.php?member=1">銀會員</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link <?php if ($member == 2) echo "active"; else echo "link-success"?>" href="coupon_list.php?member=2">金會員</a>
+                                <a class="nav-link <?php if ($member == 2) echo "active";
+                                                    else echo "link-success" ?>" href="coupon_list.php?member=2">金會員</a>
                             </li>
                         </ul>
                         <div class="mt-1" id="check_valid">
@@ -158,6 +188,29 @@ $rows = $result->fetch_all(MYSQLI_ASSOC);
                                 </div>
                                 <div class="col-auto">
                                     <button class="btn btn-info" type="submit">搜尋</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div>
+                        <form action="coupon_list.php">
+                            <div class="row align-items-center gx-2">
+                                <div class="col-auto">
+                                    開始日期區間
+                                </div>
+                                <div class="col-auto">
+                                    <input type="date" class="form-control" name="start" value="<?php if (isset($_GET["start"])) echo $_GET["start"]; ?>">
+                                </div>
+                                <div class="col-auto">
+                                    to
+                                </div>
+                                <div class="col-auto">
+                                    <input type="date" class="form-control" name="end" value="<?php if (isset($_GET["end"])) echo $_GET["end"]; ?>">
+                                </div>
+                                <input type="hidden" value="<?= $member ?>" name="member">
+                                <input type="hidden" value="<?= $valid ?>" name="valid">
+                                <div class="col-auto">
+                                    <button class="btn btn-info" type="submit">查詢</button>
                                 </div>
                             </div>
                         </form>
@@ -202,6 +255,7 @@ $rows = $result->fetch_all(MYSQLI_ASSOC);
                             <thead>
                                 <tr>
                                     <th>編號</th>
+                                    <th>狀態</th>
                                     <th>優惠券名稱/折扣碼</th>
                                     <th style="width: 25%;">優惠敘述</th>
                                     <th>適用會員</th>
@@ -269,6 +323,7 @@ $rows = $result->fetch_all(MYSQLI_ASSOC);
                                 <tbody>
                                     <tr>
                                         <td><?= $coupon["id"] ?></td>
+                                        <td class="<?php echo $coupon["valid"] == 1 ? "": "text-danger"; ?>"><?php echo $coupon["valid"] == 1 ? "上架中": "已下架"; ?></td>
                                         <td>
                                             <a href="coupon_edit.php?id=<?= $coupon["id"] ?>" class="btn btn-outline-secondary btn-sm">
                                                 <?php echo !empty($coupon["coupon_name"]) ? $coupon["coupon_name"] : $coupon["coupon_code"]; ?>
@@ -427,26 +482,26 @@ $rows = $result->fetch_all(MYSQLI_ASSOC);
         order_grade.addEventListener("change", function() {
             // console.log(order_grade);
             if (order_grade.value == "由低至高") {
-                location.href = "coupon_list.php?type=1&member=<?= $member ?>&valid=<?= $valid ?>";
+                location.href = "coupon_list.php?type=1&member=<?= $member ?>&valid=<?= $valid ?>&start=<?=$start?>&end=<?=$end?>";
             } else if (order_grade.value == "由高至低") {
-                location.href = "coupon_list.php?type=2&member=<?= $member ?>&valid=<?= $valid ?>";
+                location.href = "coupon_list.php?type=2&member=<?= $member ?>&valid=<?= $valid ?>&start=<?=$start?>&end=<?=$end?>";
             }
 
         });
         order_time.addEventListener("change", function() {
             // console.log(order_time);
             if (order_time.value == "由近至遠") {
-                location.href = "coupon_list.php?type=3&member=<?= $member ?>&valid=<?= $valid ?>";
+                location.href = "coupon_list.php?type=3&member=<?= $member ?>&valid=<?= $valid ?>&start=<?=$start?>&end=<?=$end?>";
             } else if (order_time.value == "由遠至近") {
-                location.href = "coupon_list.php?type=4&member=<?= $member ?>&valid=<?= $valid ?>";
+                location.href = "coupon_list.php?type=4&member=<?= $member ?>&valid=<?= $valid ?>&start=<?=$start?>&end=<?=$end?>";
             }
         });
         order_id.addEventListener("change", function() {
             // console.log(order_time);
             if (order_id.value == "由低至高") {
-                location.href = "coupon_list.php?type=5&member=<?= $member ?>&valid=<?= $valid ?>";
+                location.href = "coupon_list.php?type=5&member=<?= $member ?>&valid=<?= $valid ?>&start=<?=$start?>&end=<?=$end?>";
             } else if (order_id.value == "由高至低") {
-                location.href = "coupon_list.php?type=6&member=<?= $member ?>&valid=<?= $valid ?>";
+                location.href = "coupon_list.php?type=6&member=<?= $member ?>&valid=<?= $valid ?>&start=<?=$start?>&end=<?=$end?>";
             }
         });
     </script>

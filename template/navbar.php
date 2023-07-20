@@ -1,6 +1,10 @@
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
     <!-- Navbar Brand-->
-    <a class="navbar-brand ps-3" href="/KT_14/index.php">鍵の旅人</a>
+    <a class="navbar-brand ps-3" href="/4-kt/index.php">
+        <figure class="w-100 mb-0">
+            <img class="w-100 align-middle" src="/4-kt/images/logo/橫logo_白.svg" alt="">
+        </figure>
+    </a>
     <!-- Sidebar Toggle-->
     <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
     <!-- Navbar Search-->
@@ -20,7 +24,7 @@
                 <li>
                     <hr class="dropdown-divider" />
                 </li> -->
-                <li><a class="dropdown-item" href="/KT_14/login.php">Logout</a></li>
+                <li><a class="dropdown-item" href="/4-kt/login.php">Logout</a></li>
             </ul>
         </li>
     </ul>

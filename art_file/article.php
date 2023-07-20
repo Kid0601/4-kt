@@ -98,8 +98,9 @@ $rows = $result_page->fetch_all(MYSQLI_ASSOC);
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <!-- Bootstrap CSS v5.2.1 -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  <!-- Bootstrap CSS v5.3.0 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <!-- font awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
@@ -236,10 +237,11 @@ $rows = $result_page->fetch_all(MYSQLI_ASSOC);
                         <td>
                           <a href="art_read.php?id=<?= $row["id"] ?>" class="btn btn-info">檢閱&編輯</a>
                           <!-- 刪除功能 -->
-                          <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#<?= $row["id"] ?>">
+                          <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#Modal<?= $row["id"] ?>">
                             刪除
                           </button>
-                          <div class="modal fade" id="<?= $row["id"] ?>" tabindex="-1" aria-labelledby="<?= $row["id"] ?>" aria-hidden="true">
+                          <!-- modal -->
+                          <div class="modal fade" id="Modal<?= $row["id"] ?>" tabindex="-1" aria-labelledby="<?= $row["id"] ?>" aria-hidden="true">
                             <div class="modal-dialog">
                               <div class="modal-content">
                                 <div class="modal-header">
@@ -295,9 +297,8 @@ $rows = $result_page->fetch_all(MYSQLI_ASSOC);
       <?php include("../template/footer.php") ?>
     </div>
   </div>
-  <?php include("../template/footerJs.php") ?>
+  <?php include("../template/footerjs.php") ?>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 
   <script>
     // document.getElementById("type3").addEventListener("click", function() {
@@ -306,6 +307,7 @@ $rows = $result_page->fetch_all(MYSQLI_ASSOC);
     //   $rows = $result.fetch_all(MYSQLI_ASSOC);
     // });
   </script>
+
 </body>
 
 </html>
