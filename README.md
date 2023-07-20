@@ -13,3 +13,4 @@
 # 2023/07/19 立軒 - modify create category2 by modal
 # 2023/07/19 鄭凱文 - change article.php JS
 # 2023/07/19 郭寧 - modify readme file
+# 2023/07/20 陳咸儒 - modify bug for updateProfileUserUI.php
